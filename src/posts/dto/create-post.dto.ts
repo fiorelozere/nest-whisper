@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUrl, IsUUID } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsUrl, IsUUID } from 'class-validator';
 
 
 export class CreatePostDto {
@@ -12,4 +12,7 @@ export class CreatePostDto {
   @IsNotEmpty()
   content: string;
 
+  categoryId: number;
+
+  tags: string;
 }

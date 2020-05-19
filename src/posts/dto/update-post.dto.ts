@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsUrl, IsUUID } from 'class-validator';
 
 export class UpdatePostDto {
 
@@ -8,4 +8,9 @@ export class UpdatePostDto {
   photoUrl: string;
 
   content: string;
+
+
+  categoryId: number;
+
+  tags: string;
 }

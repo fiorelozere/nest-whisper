@@ -4,12 +4,14 @@ import { PostsRepository } from './posts.repository';
 import { Post } from './post.entity';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { CategoriesRepository } from '../categories/categories.repository';
 
 @Injectable()
 export class PostsService {
   constructor(
     @InjectRepository(PostsRepository)
     private postsRepository: PostsRepository
+
   ) {
 
   }
@@ -17,6 +19,7 @@ export class PostsService {
     const posts = await this.postsRepository.find({});
     return posts;
   }
+
 
   async getPost(id: string): Promise<Post> {
     const post = await this.postsRepository.findOne(id);

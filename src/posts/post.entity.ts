@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Category } from '../categories/category.entity';
 
 @Entity()
-export class Post {
+export class Post extends BaseEntity{
 
   @PrimaryGeneratedColumn()
   id: string;
@@ -26,4 +27,13 @@ export class Post {
 
   @Column()
   downVotes: number;
+
+  @ManyToOne(type => Category, category => category.post, {eager: false, nullable: false})
+  category: Category;
+
+  @Column()
+  categoryId: number;
+
+  @Column()
+  tags: string;
 }
