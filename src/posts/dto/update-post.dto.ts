@@ -4,7 +4,7 @@ export class UpdatePostDto {
 
   title: string;
 
-  @IsUrl()
+
   photoUrl: string;
 
   content: string;
@@ -13,4 +13,6 @@ export class UpdatePostDto {
   categoryId: number;
 
   tags: string;
+
+  visibleUsername: boolean;
 }

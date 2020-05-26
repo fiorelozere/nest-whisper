@@ -1,33 +1,50 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { User } from '../auth/user.entity';
+import { GetUser } from '../auth/get-user.decorator';
 
 @Controller('posts')
+@UseGuards(AuthGuard())
 export class PostsController {
   constructor(private postsService: PostsService) {
   }
+
   @Get()
-  getPosts(){
+  getPosts() {
     return this.postsService.getPosts();
   }
 
+  @Get('myposts')
+  getUserPosts(@GetUser() user: User) {
+    return this.postsService.getUserPosts(user);
+  }
+
+  @Get('/myposts/:id')
+  getUserPost(@Param('id') id: string, @GetUser() user: User) {
+    return this.postsService.getUserPost(id, user);
+  }
 
   @Get(':id')
-  getPost(@Param('uuid') id:string){
+  getPost(@Param('id') id: string) {
     return this.postsService.getPost(id);
   }
+
   @Post()
-  createPost(@Body(ValidationPipe) createPostDto: CreatePostDto) {
-    return this.postsService.createPost(createPostDto);
+  @UsePipes(ValidationPipe)
+  createPost(@Body() createPostDto: CreatePostDto, @GetUser() user: User) {
+    return this.postsService.createPost(createPostDto, user);
   }
 
   @Patch(':id')
-  updatePost(@Param('uuid') id: string, @Body(ValidationPipe) updatePostDto: UpdatePostDto) {
-    return this.postsService.updatePost(updatePostDto, id);
+  updatePost(@Param('uuid') id: string, @Body(ValidationPipe) updatePostDto: UpdatePostDto, @GetUser() user: User) {
+    return this.postsService.updatePost(updatePostDto, id , user);
   }
+
   @Delete(':id')
-  deletePost(@Param('uuid') id: string) {
-    return this.postsService.deletePost(id);
+  deletePost(@Param('id') id: string, @GetUser() user: User) {
+    return this.postsService.deletePost(id,user);
   }
 }

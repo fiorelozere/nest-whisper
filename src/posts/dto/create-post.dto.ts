@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsUrl, IsUUID } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsUrl, IsUUID } from 'class-validator';
 
 
 export class CreatePostDto {
@@ -15,4 +15,7 @@ export class CreatePostDto {
   categoryId: number;
 
   tags: string;
+
+
+  visibleUsername: boolean;
 }
