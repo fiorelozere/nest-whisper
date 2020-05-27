@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from '../categories/category.entity';
 import { User } from '../auth/user.entity';
+import { Comment } from '../comments/comments.entity';
 
 @Entity()
 export class Post extends BaseEntity{
@@ -30,7 +31,7 @@ export class Post extends BaseEntity{
   downVotes: number;
 
   @Column()
-  createdAt: string;
+  createdAt: string = this.getTime();
 
   @ManyToOne(type => Category, category => category.post, {eager: false, nullable: false})
   category: Category;
@@ -50,4 +51,14 @@ export class Post extends BaseEntity{
   @Column()
   visibleUsername: boolean;
 
+  @OneToMany(type => Comment, comment => comment.post, {eager: true})
+  comments: Comment[];
+
+
+  getTime(): string {
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return date+' '+time;
+  }
 }

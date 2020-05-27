@@ -4,6 +4,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { PostsModule } from './posts/posts.module';
 import { CategoriesModule } from './categories/categories.module';
 import { AuthModule } from './auth/auth.module';
+import { CommentsModule } from './comments/comments.module';
 
 
 
@@ -12,7 +13,8 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot(typeOrmConfig),
     PostsModule,
     CategoriesModule,
-    AuthModule
+    AuthModule,
+    CommentsModule
   ]
 })
 export class AppModule {}

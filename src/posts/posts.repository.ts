@@ -12,10 +12,6 @@ export class PostsRepository extends Repository<Post> {
     console.log( visibleUsername);
     const uuid = uuidv4();
     const post = new Post();
-    const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    const dateTime = date+' '+time;
     post.uuid = uuid;
     post.title = title;
     post.user = user;
@@ -28,7 +24,6 @@ export class PostsRepository extends Repository<Post> {
     post.tags = tags;
     post.visibleUsername = visibleUsername;
     post.username = null;
-    post.createdAt = dateTime;
     if(post.visibleUsername){
       post.username = user.username;
     }
