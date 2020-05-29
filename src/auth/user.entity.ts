@@ -2,6 +2,9 @@ import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColum
 import * as bcrypt from 'bcrypt'
 import { Post } from '../posts/post.entity';
 import { Comment } from '../comments/comments.entity';
+
+
+
 @Entity()
 @Unique(['username'])
 export class User extends BaseEntity{
@@ -9,7 +12,13 @@ export class User extends BaseEntity{
   id:string;
 
   @Column()
+  roles: string;
+
+  @Column()
   username: string;
+
+  @Column()
+  email: string;
 
   @Column()
   password: string;
