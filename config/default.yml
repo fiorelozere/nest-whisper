@@ -1,0 +1,10 @@
+server:
+  port: 3000
+
+db:
+  type: 'postgres'
+  posrt: 5432
+  database: 'nest-whisper'
+
+jwt:
+  expiresIn: 36000
