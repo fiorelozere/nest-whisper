@@ -11,6 +11,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "heroku-postbuild": "npm install --production",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
