@@ -11,6 +11,6 @@ export const typeOrmConfig: TypeOrmModule = {
   type: dbConfig.type,
   port: dbConfig.port,
   entities: ["dist/**/*.entity{.ts,.js}"],
-  synchronize: dbConfig.synchronize,
+  synchronize: true,
 
 }
