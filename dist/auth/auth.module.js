@@ -23,7 +23,7 @@ let AuthModule = (() => {
             imports: [
                 passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
                 jwt_1.JwtModule.register({
-                    secret: 'Secretsecret',
+                    secret: process.env.JWTSECRET || 'Secretsecret',
                     signOptions: {
                         expiresIn: 3600000
                     }
