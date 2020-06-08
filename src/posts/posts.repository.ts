@@ -8,8 +8,7 @@ import { User } from '../auth/user.entity';
 export class PostsRepository extends Repository<Post> {
 
   async createPost(createPostDto: CreatePostDto, user: User): Promise<Post> {
-    const { title, photoUrl, content, categoryId, tags, visibleUsername} = createPostDto;
-    console.log( visibleUsername);
+    const { title, photoUrl, content, categoryId, tags, visibleUsername } = createPostDto;
     const uuid = uuidv4();
     const post = new Post();
     post.uuid = uuid;

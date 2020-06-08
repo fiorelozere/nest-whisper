@@ -7,6 +7,6 @@ async function bootstrap() {
 
   const serverConfig = config.get('server') ;
 
-  await app.listen(serverConfig.port);
+  await app.listen(process.env.PORT || serverConfig.port);
 }
 bootstrap();

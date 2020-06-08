@@ -34,8 +34,11 @@ export class AuthService {
   }
 
   async myProfile(user: User): Promise<User> {
+    delete(user.roles);
     delete(user.password);
     delete(user.salt);
+    delete(user.posts);
+    delete(user.comments);
     return user;
   }
 

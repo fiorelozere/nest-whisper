@@ -10,12 +10,13 @@ import { AuthCredentialsSignInDto } from './dto/auth-credentials-signin.dto';
 export class UserRepository extends Repository<User> {
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
-    const { username, email, password } = authCredentialsDto;
+    const { username, email, password, profilePhotoUrl } = authCredentialsDto;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await this.hashPassword(password, salt);
     const user = new User();
     user.username = username;
     user.email = email;
+    user.profilePhotoUrl = profilePhotoUrl;
     user.password = hashedPassword;
     user.salt = salt;
     user.roles = 'user';
@@ -31,12 +32,13 @@ export class UserRepository extends Repository<User> {
   }
 
   async signUpAsAdmin(authCredentialsDto: AuthCredentialsDto): Promise<void> {
-    const { username, email, password } = authCredentialsDto;
+    const { username, email, password, profilePhotoUrl } = authCredentialsDto;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await this.hashPassword(password, salt);
     const user = new User();
     user.username = username;
     user.email = email;
+    user.profilePhotoUrl = profilePhotoUrl;
     user.password = hashedPassword;
     user.salt = salt;
     user.roles = 'admin';

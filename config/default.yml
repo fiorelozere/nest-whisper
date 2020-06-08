@@ -3,7 +3,7 @@ server:
 
 db:
   type: 'postgres'
-  posrt: 5432
+  port: 5432
   database: 'nest-whisper'
 
 jwt:

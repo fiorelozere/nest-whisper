@@ -23,17 +23,11 @@ export class CategoriesController {
 
   @Get()
   getCategories(@GetUser()user : User) {
-    if(user.roles !== 'admin'){
-      throw new UnauthorizedException('You dont have privileges to access this');
-    }
     return this.categoriesService.getCategories();
   }
 
   @Get(':id')
   getCategory(@Param('uuid')id: number, @GetUser()user : User) {
-    if(user.roles !== 'admin'){
-      throw new UnauthorizedException('You dont have privileges to access this');
-    }
     return this.categoriesService.getCategory(id);
   }
 
