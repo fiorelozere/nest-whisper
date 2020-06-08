@@ -23,7 +23,7 @@ let JwtStrategy = (() => {
         constructor(userRepository) {
             super({
                 jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
-                secretOrKey: 'Secretsecret'
+                secretOrKey: process.env.JWTSECRET || 'Secretsecret'
             });
             this.userRepository = userRepository;
         }
