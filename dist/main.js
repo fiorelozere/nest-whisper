@@ -6,7 +6,7 @@ const config = require("config");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const serverConfig = config.get('server');
-    await app.listen(serverConfig.port);
+    await app.listen(process.env.PORT || serverConfig.port);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

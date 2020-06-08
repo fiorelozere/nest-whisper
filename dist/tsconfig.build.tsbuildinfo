@@ -2422,7 +2422,7 @@
         "affectsGlobalScope": false
       },
       "../src/config/typeorm.config.ts": {
-        "version": "250c81f3fcaa7ce03eff3241f591e2952e613b7bc743616b8411b8b52811b27a",
+        "version": "62768d451781e5246d488fbbed0cd53a40d37876b50627f5ea72fb73ae0621b1",
         "signature": "29fbc8eae5b1a44fef56ad3e240085d1d5ba14e79a9cd3353782b3d6e18e60bd",
         "affectsGlobalScope": false
       },
@@ -3702,7 +3702,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "b1d91f856121f5e0a558df0197040fe6b39319ff4c278621affe84544120ff55",
+        "version": "50f7f03f611cbff93493bbca14d026ad1a788781276d922171b7a34f32027f9f",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
