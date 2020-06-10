@@ -12,7 +12,9 @@ export class CreatePostDto {
   @IsNotEmpty()
   content: string;
 
-  categoryId: number;
+
+  categoryName: string;
+
 
   tags: string;
 

@@ -6,7 +6,7 @@ import { Post } from '../posts/post.entity';
 @Unique(['categoryName'])
 export class Category extends BaseEntity{
   @PrimaryGeneratedColumn()
-  id: string
+  id: number
   @Column()
   uuid:string
   @Column()

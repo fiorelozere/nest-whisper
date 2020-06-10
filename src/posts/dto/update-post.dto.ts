@@ -10,6 +10,8 @@ export class UpdatePostDto {
   content: string;
 
 
+  categoryName: string;
+
   categoryId: number;
 
   tags: string;

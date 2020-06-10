@@ -15,7 +15,7 @@ let CategoriesRepository = class CategoriesRepository extends typeorm_1.Reposito
     async createCategory(categoryName) {
         const category = new category_entity_1.Category();
         category.uuid = uuid_1.v4();
-        category.categoryName = categoryName;
+        category.categoryName = categoryName.toLowerCase();
         try {
             await this.save(category);
         }

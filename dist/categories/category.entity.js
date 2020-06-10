@@ -16,7 +16,7 @@ let Category = class Category extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Category.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),

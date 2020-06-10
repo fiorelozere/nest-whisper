@@ -6,13 +6,15 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { CategoriesRepository } from '../categories/categories.repository';
 import { User } from '../auth/user.entity';
+import { Category } from '../categories/category.entity';
 
 @Injectable()
 export class PostsService {
   constructor(
     @InjectRepository(PostsRepository)
-    private postsRepository: PostsRepository
-
+    private postsRepository: PostsRepository,
+    @InjectRepository(CategoriesRepository)
+  private categoriesRepository: CategoriesRepository
   ) {
 
   }
@@ -67,7 +69,13 @@ export class PostsService {
   }
 
   async createPost(createPostDto: CreatePostDto, user: User): Promise<Post> {
-    return this.postsRepository.createPost(createPostDto, user);
+    const { categoryName } = createPostDto;
+    const category = await this.categoriesRepository.findOne({categoryName: categoryName});
+    if(!category) {
+      throw new NotFoundException(`Category with name ${categoryName} not found`);
+    }
+
+    return this.postsRepository.createPost(createPostDto, user, category);
   }
 
   async updatePost(updatePostDto: UpdatePostDto, id: string, user: User): Promise<Post> {

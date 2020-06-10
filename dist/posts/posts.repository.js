@@ -12,8 +12,8 @@ const post_entity_1 = require("./post.entity");
 const uuid_1 = require("uuid");
 const common_1 = require("@nestjs/common");
 let PostsRepository = class PostsRepository extends typeorm_1.Repository {
-    async createPost(createPostDto, user) {
-        const { title, photoUrl, content, categoryId, tags, visibleUsername } = createPostDto;
+    async createPost(createPostDto, user, category) {
+        const { title, photoUrl, content, tags, visibleUsername } = createPostDto;
         const uuid = uuid_1.v4();
         const post = new post_entity_1.Post();
         post.uuid = uuid;
@@ -24,20 +24,22 @@ let PostsRepository = class PostsRepository extends typeorm_1.Repository {
         post.views = 0;
         post.upVotes = 0;
         post.downVotes = 0;
-        post.categoryId = categoryId;
-        post.tags = tags;
+        post.category = category;
+        post.categoryName = post.category.categoryName;
+        post.tags = tags.toLowerCase();
         post.visibleUsername = visibleUsername;
         post.username = user.username;
         await this.save(post);
         if (!post.visibleUsername) {
             delete post.username;
         }
+        delete post.category;
         delete post.visibleUsername;
         delete post.user;
         return post;
     }
     async updatePost(updatePostDto, id, user) {
-        const { title, photoUrl, content, categoryId, tags } = updatePostDto;
+        const { title, photoUrl, content, tags } = updatePostDto;
         const post = await this.findOne({ where: { username: user.username, id: id } });
         if (!post) {
             throw new common_1.NotFoundException(`Post with id: ${id} not found`);
@@ -50,9 +52,6 @@ let PostsRepository = class PostsRepository extends typeorm_1.Repository {
         }
         if (content !== null) {
             post.content = content;
-        }
-        if (categoryId !== null) {
-            post.categoryId = categoryId;
         }
         if (tags !== null) {
             post.tags = tags;

@@ -2447,8 +2447,8 @@
         "affectsGlobalScope": false
       },
       "../src/categories/category.entity.ts": {
-        "version": "1b2a04609d6286bb16e47e75f7a518fbe307b5872411f29d6f6c7925628f18fa",
-        "signature": "3ec142ce07cad0d88f762d66915163e842e1141fa388774d7db85d297e10405e",
+        "version": "aa8c4d56b6fa83c5db5cb242236f59a3819518e8525890967f311c160eaa2f27",
+        "signature": "24f534a37fa38127851a5e81f29f86a7533be290845d916bf2550363f3326c7c",
         "affectsGlobalScope": false
       },
       "../src/comments/comments.entity.ts": {
@@ -2462,8 +2462,8 @@
         "affectsGlobalScope": false
       },
       "../src/posts/post.entity.ts": {
-        "version": "cc57abc2accf06d92b2585190bcfe7ebcc31e27752b487fe3fc44a7158e99053",
-        "signature": "d8fea2abb35e3acd215403e0c4b70e0f8c80c6ca559a7d4e25545cb6ed22f244",
+        "version": "669440af0c29223ba8b90c2bcfb31a12178068b798f6e604cf7d7d718d140364",
+        "signature": "5fcb99b6ddc1bbb4aaca866b5eb502e4cd77bd24eb79d6780a8e3126f9aa64a9",
         "affectsGlobalScope": false
       },
       "../node_modules/class-validator/types/validation/validationerror.d.ts": {
@@ -3082,18 +3082,8 @@
         "affectsGlobalScope": false
       },
       "../src/posts/dto/create-post.dto.ts": {
-        "version": "afe05a956f0c04a15ba997b9d01a934e7af1cd2f5c8f33ad338a9a2938fb8e0f",
-        "signature": "308d5c646939047bd670c22bb44a9e863d406e7f4415d76c6139aff24ccce0aa",
-        "affectsGlobalScope": false
-      },
-      "../src/posts/posts.repository.ts": {
-        "version": "6c05c9c512d64dc8ab5aa02c79ac5fdd93e53167c15be32d77735ab48e848113",
-        "signature": "f62581a836f22bb500c01eb9ff184357b295dd4e09900a6bad6e8d4b084c6145",
-        "affectsGlobalScope": false
-      },
-      "../src/posts/dto/update-post.dto.ts": {
-        "version": "bcd639ab7ee154802912d986535d4ccb758c340d581b6a99ba73006cf79d8969",
-        "signature": "7ee1db5d343c5576edd35cbd876cf28b16738b98468f6449e5a9c9f677847dd4",
+        "version": "75eb41a6a221aa3ecd5996c8c9d9554dc99576e6fb204d2d27ac16a29d5bc97e",
+        "signature": "eb7d9dadcecef3938619332b28be9816dfef5ad4c1235f82e262dadbdf78abd1",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/core/errors/exceptions/runtime.exception.d.ts": {
@@ -3107,13 +3097,23 @@
         "affectsGlobalScope": false
       },
       "../src/categories/categories.repository.ts": {
-        "version": "1790ecb55524faa352253441f18a3ad7983c638fc93f8897dc10ca0399eea1fd",
+        "version": "3224552ef61c50f89469674bdeed35426e0e16bbf15c5a5908197fccc0bb4afa",
         "signature": "10edfd9f001f06770a08d3f0d8779c3727edee1a50066fee3414949564b37d43",
         "affectsGlobalScope": false
       },
+      "../src/posts/posts.repository.ts": {
+        "version": "331f4c4f5ed26c69352eb6d2b5472af1daa8baf0391cf82232977b9d6248567c",
+        "signature": "33fd76d2058ad31f39ecccf16387529dcfcfbb136b51160c7e08b42184eec13f",
+        "affectsGlobalScope": false
+      },
+      "../src/posts/dto/update-post.dto.ts": {
+        "version": "1087288e2f9f9c0a86d8ae39dfa35253549542941502fd0f58e5eeaab0abb8a4",
+        "signature": "c72dbd0014be1100681cb5c3121838ba848173e46d30c1c8d4440dfbfcb73ee0",
+        "affectsGlobalScope": false
+      },
       "../src/posts/posts.service.ts": {
-        "version": "ff3ed5922decf95b2d3e3a8b76cd1867fa823e8a7bc5915dc6f77c040c879184",
-        "signature": "31aa9581c0733212482a765e3dd29ae7829c54fb49b74c4253874359d23f82e4",
+        "version": "a2c81ece8a87e637eeb99c29b03b2b84ad4c94e3ff99e57bafc512ce98c399d8",
+        "signature": "f86be7bff84e5ce83725866edfc8ad87d58a28178a708633a83ad83a8531f126",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -3187,7 +3187,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/user.repository.ts": {
-        "version": "db1b9a7caf00a3e5612982edfdb458a7843ece075f5dbe548dd2ec5d3449d541",
+        "version": "9a08d9f71cf3965640da51d4c66e03c5db421c2158df4d4a6a4d6c613fb17ec2",
         "signature": "3f269f4ac6b8c6adc54335308179d527b795d7a548514f58f5de42a906594632",
         "affectsGlobalScope": false
       },
@@ -11375,6 +11375,7 @@
       ],
       "../src/posts/posts.repository.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -11382,6 +11383,8 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/auth/user.entity.ts",
+        "../src/categories/categories.repository.ts",
+        "../src/categories/category.entity.ts",
         "../src/posts/dto/create-post.dto.ts",
         "../src/posts/post.entity.ts"
       ],
@@ -11395,6 +11398,7 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/auth/user.entity.ts",
         "../src/categories/categories.repository.ts",
+        "../src/categories/category.entity.ts",
         "../src/posts/dto/create-post.dto.ts",
         "../src/posts/dto/update-post.dto.ts",
         "../src/posts/post.entity.ts",
@@ -18562,11 +18566,13 @@
       "../src/posts/posts.repository.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/auth/user.entity.ts",
+        "../src/categories/category.entity.ts",
         "../src/posts/dto/create-post.dto.ts",
         "../src/posts/post.entity.ts"
       ],
       "../src/posts/posts.service.ts": [
         "../src/auth/user.entity.ts",
+        "../src/categories/categories.repository.ts",
         "../src/posts/dto/create-post.dto.ts",
         "../src/posts/dto/update-post.dto.ts",
         "../src/posts/post.entity.ts",

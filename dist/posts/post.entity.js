@@ -68,8 +68,8 @@ __decorate([
 ], Post.prototype, "category", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Number)
-], Post.prototype, "categoryId", void 0);
+    __metadata("design:type", String)
+], Post.prototype, "categoryName", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)

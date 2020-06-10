@@ -37,7 +37,7 @@ export class Post extends BaseEntity{
   category: Category;
 
   @Column()
-  categoryId: number;
+  categoryName: string;
 
   @Column()
   tags: string;

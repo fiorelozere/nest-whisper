@@ -10,7 +10,7 @@ export class CategoriesRepository extends Repository<Category> {
     async createCategory(categoryName: string) : Promise<Category> {
       const category = new Category();
       category.uuid = uuidv4();
-      category.categoryName = categoryName;
+      category.categoryName = categoryName.toLowerCase();
       try {
         await this.save(category);
       } catch (e) {
