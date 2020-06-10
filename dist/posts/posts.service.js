@@ -22,10 +22,24 @@ let PostsService = class PostsService {
     }
     async getPosts() {
         const posts = await this.postsRepository.find({});
+        posts.forEach(post => {
+            if (!post.visibleUsername) {
+                delete post.username;
+            }
+            delete post.visibleUsername;
+            delete post.user;
+        });
         return posts;
     }
     async getUserPosts(user) {
-        const posts = this.postsRepository.find({ where: { username: user.username } });
+        const posts = await this.postsRepository.find({ where: { username: user.username } });
+        posts.forEach(post => {
+            if (!post.visibleUsername) {
+                delete post.username;
+            }
+            delete post.visibleUsername;
+            delete post.user;
+        });
         return posts;
     }
     async getPost(id) {
@@ -33,10 +47,20 @@ let PostsService = class PostsService {
         if (!post) {
             throw new common_1.NotFoundException(`Post with id: ${id} not found`);
         }
+        if (!post.visibleUsername) {
+            delete post.username;
+        }
+        delete post.visibleUsername;
+        delete post.user;
         return post;
     }
     async getUserPost(id, user) {
         const post = await this.postsRepository.findOne({ where: { username: user.username, id: id } });
+        if (!post.visibleUsername) {
+            delete post.username;
+        }
+        delete post.visibleUsername;
+        delete post.user;
         return post;
     }
     async createPost(createPostDto, user) {
