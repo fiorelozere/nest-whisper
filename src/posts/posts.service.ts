@@ -18,11 +18,25 @@ export class PostsService {
   }
   async getPosts():Promise<Post[]> {
     const posts = await this.postsRepository.find({});
+    posts.forEach(post =>{
+      if(!post.visibleUsername){
+        delete post.username;
+      }
+      delete post.visibleUsername;
+      delete post.user;
+    })
     return posts;
   }
 
   async getUserPosts(user: User): Promise<Post[]> {
-    const posts = this.postsRepository.find({where: {username: user.username}});
+    const posts = await this.postsRepository.find({where: {username: user.username}});
+    posts.forEach(post =>{
+      if(!post.visibleUsername){
+        delete post.username;
+      }
+      delete post.visibleUsername;
+      delete post.user;
+    })
     return posts;
   }
 
@@ -31,11 +45,21 @@ export class PostsService {
     if(!post){
       throw new NotFoundException(`Post with id: ${id} not found`);
     }
+    if(!post.visibleUsername){
+      delete post.username;
+    }
+    delete post.visibleUsername;
+    delete post.user;
     return post;
   }
 
   async getUserPost(id: string, user: User):Promise<Post> {
     const post = await this.postsRepository.findOne({where: {username: user.username, id: id}});
+    if(!post.visibleUsername){
+      delete post.username;
+    }
+    delete post.visibleUsername;
+    delete post.user;
     return post;
   }
 

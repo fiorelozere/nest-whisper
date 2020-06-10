@@ -51,7 +51,11 @@ export class PostsRepository extends Repository<Post> {
     if(tags !== null) {
       post.tags = tags;
     }
-
+    if(!post.visibleUsername){
+      delete post.username;
+    }
+    delete post.visibleUsername;
+    delete post.user;
     await this.save(post);
     return post;
 
