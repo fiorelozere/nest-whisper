@@ -60,7 +60,7 @@ let UserRepository = class UserRepository extends typeorm_1.Repository {
     }
     async validateUserPassword(authCredentialsSignInDto) {
         const { username, password } = authCredentialsSignInDto;
-        const user = await this.findOne({ username });
+        const user = await this.findOne({ username: username.toLowerCase() });
         if (user && await user.validatePassword(password)) {
             return user.username;
         }
