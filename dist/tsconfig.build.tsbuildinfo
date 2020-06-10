@@ -2462,7 +2462,7 @@
         "affectsGlobalScope": false
       },
       "../src/posts/post.entity.ts": {
-        "version": "13eb01a9f01d620378b567096064cbccf0bcc98b33bcae073101ed6d4200c452",
+        "version": "cc57abc2accf06d92b2585190bcfe7ebcc31e27752b487fe3fc44a7158e99053",
         "signature": "d8fea2abb35e3acd215403e0c4b70e0f8c80c6ca559a7d4e25545cb6ed22f244",
         "affectsGlobalScope": false
       },
@@ -3087,7 +3087,7 @@
         "affectsGlobalScope": false
       },
       "../src/posts/posts.repository.ts": {
-        "version": "ca22a7e8b941d053cc9ef47854cfeda7d04ddadc8eb2869f0c807aa70c2d1aa1",
+        "version": "6c05c9c512d64dc8ab5aa02c79ac5fdd93e53167c15be32d77735ab48e848113",
         "signature": "f62581a836f22bb500c01eb9ff184357b295dd4e09900a6bad6e8d4b084c6145",
         "affectsGlobalScope": false
       },
@@ -3112,7 +3112,7 @@
         "affectsGlobalScope": false
       },
       "../src/posts/posts.service.ts": {
-        "version": "681f1fb3faae84e923ac609ef646cc61a12b4b3f7c8a5dc4d9c71442b22232d6",
+        "version": "ff3ed5922decf95b2d3e3a8b76cd1867fa823e8a7bc5915dc6f77c040c879184",
         "signature": "31aa9581c0733212482a765e3dd29ae7829c54fb49b74c4253874359d23f82e4",
         "affectsGlobalScope": false
       },
@@ -3522,7 +3522,7 @@
         "affectsGlobalScope": false
       },
       "../src/comments/comments.repository.ts": {
-        "version": "346d5643a0409c55efe7879ac2e4dbc433117e392914e415eea5f27d3c213804",
+        "version": "731fbb5a1bfd9627b2580f2e8ebb5bee32735fe86454ce14bbb3f22eb3ebfbd7",
         "signature": "2b1e42ce5bfbe110948f88bb0660d7eb100295501cfc99a5ee3f72b2949732e0",
         "affectsGlobalScope": false
       },
@@ -11279,6 +11279,7 @@
         "../src/comments/comments.service.ts"
       ],
       "../src/comments/comments.repository.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -11373,6 +11374,7 @@
         "../src/posts/posts.service.ts"
       ],
       "../src/posts/posts.repository.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",

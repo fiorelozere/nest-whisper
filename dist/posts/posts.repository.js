@@ -10,6 +10,7 @@ exports.PostsRepository = void 0;
 const typeorm_1 = require("typeorm");
 const post_entity_1 = require("./post.entity");
 const uuid_1 = require("uuid");
+const common_1 = require("@nestjs/common");
 let PostsRepository = class PostsRepository extends typeorm_1.Repository {
     async createPost(createPostDto, user) {
         const { title, photoUrl, content, categoryId, tags, visibleUsername } = createPostDto;
@@ -38,6 +39,9 @@ let PostsRepository = class PostsRepository extends typeorm_1.Repository {
     async updatePost(updatePostDto, id, user) {
         const { title, photoUrl, content, categoryId, tags } = updatePostDto;
         const post = await this.findOne({ where: { username: user.username, id: id } });
+        if (!post) {
+            throw new common_1.NotFoundException(`Post with id: ${id} not found`);
+        }
         if (title !== null) {
             post.title = title;
         }

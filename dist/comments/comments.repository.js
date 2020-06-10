@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentsRepository = void 0;
 const typeorm_1 = require("typeorm");
 const comments_entity_1 = require("./comments.entity");
+const common_1 = require("@nestjs/common");
 let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
     async createComment(commentString, postId, user) {
         const comment = new comments_entity_1.Comment();
@@ -23,6 +24,9 @@ let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
     }
     async updateComment(commentString, commentId, user) {
         const comment = await this.findOne({ where: { username: user.username, id: commentId } });
+        if (!comment) {
+            throw new common_1.NotFoundException(`Post with id: ${commentId} not found`);
+        }
         comment.commentString = commentString;
         await this.save(comment);
         return comment;
