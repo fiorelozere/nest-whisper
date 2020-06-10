@@ -13,7 +13,7 @@ export declare class Post extends BaseEntity {
     downVotes: number;
     createdAt: string;
     category: Category;
-    categoryId: number;
+    categoryName: string;
     tags: string;
     user: User;
     username: string;
