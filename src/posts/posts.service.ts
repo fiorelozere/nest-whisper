@@ -55,6 +55,9 @@ export class PostsService {
 
   async getUserPost(id: string, user: User):Promise<Post> {
     const post = await this.postsRepository.findOne({where: {username: user.username, id: id}});
+    if(!post) {
+      throw new NotFoundException(`Post with id: ${id} not found`);
+    }
     if(!post.visibleUsername){
       delete post.username;
     }

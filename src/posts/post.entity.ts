@@ -45,7 +45,7 @@ export class Post extends BaseEntity{
   @ManyToOne(type => User, user => user.posts, {eager: false})
   user: User;
 
-  @Column({nullable: true})
+  @Column()
   username: string;
 
   @Column()

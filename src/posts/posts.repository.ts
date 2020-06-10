@@ -3,6 +3,7 @@ import { Post } from './post.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { CreatePostDto } from './dto/create-post.dto';
 import { User } from '../auth/user.entity';
+import { NotFoundException } from '@nestjs/common';
 
 @EntityRepository(Post)
 export class PostsRepository extends Repository<Post> {
@@ -36,6 +37,9 @@ export class PostsRepository extends Repository<Post> {
   async updatePost(updatePostDto: CreatePostDto, id: string, user: User): Promise<Post> {
     const {title, photoUrl, content, categoryId, tags} = updatePostDto;
     const post = await this.findOne({where: {username: user.username, id: id}});
+    if(!post) {
+      throw new NotFoundException(`Post with id: ${id} not found`);
+    }
     if(title !== null) {
       post.title = title;
     }

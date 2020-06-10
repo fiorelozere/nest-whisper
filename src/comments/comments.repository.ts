@@ -1,6 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { Comment } from './comments.entity';
 import { User } from '../auth/user.entity';
+import { NotFoundException } from '@nestjs/common';
 
 @EntityRepository(Comment)
 export class CommentsRepository extends Repository<Comment>{
@@ -19,6 +20,9 @@ export class CommentsRepository extends Repository<Comment>{
 
   async updateComment(commentString: string, commentId: string, user: User): Promise<Comment> {
     const comment = await this.findOne({where: {username: user.username, id: commentId}});
+    if(!comment) {
+      throw new NotFoundException(`Post with id: ${commentId} not found`);
+    }
     comment.commentString = commentString;
 
     await this.save(comment);
