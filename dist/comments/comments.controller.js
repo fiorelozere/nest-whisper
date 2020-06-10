@@ -23,12 +23,21 @@ let CommentsController = class CommentsController {
         this.commentsService = commentsService;
     }
     createComment(commentString, postId, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.commentsService.createComment(commentString, postId, user);
     }
     deleteComment(commentId, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.commentsService.deleteComment(commentId, user);
     }
     updateComment(commentString, commentId, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.commentsService.updateComment(commentString, commentId, user);
     }
 };

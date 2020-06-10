@@ -28,21 +28,36 @@ let PostsController = class PostsController {
         return this.postsService.getPosts();
     }
     getUserPosts(user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.postsService.getUserPosts(user);
     }
     getUserPost(id, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.postsService.getUserPost(id, user);
     }
     getPost(id) {
         return this.postsService.getPost(id);
     }
     createPost(createPostDto, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.postsService.createPost(createPostDto, user);
     }
     updatePost(id, updatePostDto, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.postsService.updatePost(updatePostDto, id, user);
     }
     deletePost(id, user) {
+        if (user.roles !== 'user') {
+            throw new common_1.UnauthorizedException('You dont have privileges to access this');
+        }
         return this.postsService.deletePost(id, user);
     }
 };
