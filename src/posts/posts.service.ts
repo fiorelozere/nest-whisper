@@ -70,7 +70,7 @@ export class PostsService {
 
   async createPost(createPostDto: CreatePostDto, user: User): Promise<Post> {
     const { categoryName } = createPostDto;
-    const category = await this.categoriesRepository.findOne({categoryName: categoryName});
+    const category = await this.categoriesRepository.findOne({categoryName: categoryName.toLowerCase()});
     if(!category) {
       throw new NotFoundException(`Category with name ${categoryName} not found`);
     }
