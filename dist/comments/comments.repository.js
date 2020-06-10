@@ -9,30 +9,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentsRepository = void 0;
 const typeorm_1 = require("typeorm");
 const comments_entity_1 = require("./comments.entity");
-let CommentsRepository = (() => {
-    let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
-        async createComment(commentString, postId, user) {
-            const comment = new comments_entity_1.Comment();
-            comment.commentString = commentString;
-            comment.upvotes = 0;
-            comment.downvotes = 0;
-            comment.user = user;
-            comment.postId = postId;
-            comment.username = user.username;
-            await this.save(comment);
-            return comment;
-        }
-        async updateComment(commentString, commentId, user) {
-            const comment = await this.findOne({ where: { username: user.username, id: commentId } });
-            comment.commentString = commentString;
-            await this.save(comment);
-            return comment;
-        }
-    };
-    CommentsRepository = __decorate([
-        typeorm_1.EntityRepository(comments_entity_1.Comment)
-    ], CommentsRepository);
-    return CommentsRepository;
-})();
+let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
+    async createComment(commentString, postId, user) {
+        const comment = new comments_entity_1.Comment();
+        comment.commentString = commentString;
+        comment.upvotes = 0;
+        comment.downvotes = 0;
+        comment.user = user;
+        comment.postId = postId;
+        comment.username = user.username;
+        await this.save(comment);
+        return comment;
+    }
+    async updateComment(commentString, commentId, user) {
+        const comment = await this.findOne({ where: { username: user.username, id: commentId } });
+        comment.commentString = commentString;
+        await this.save(comment);
+        return comment;
+    }
+};
+CommentsRepository = __decorate([
+    typeorm_1.EntityRepository(comments_entity_1.Comment)
+], CommentsRepository);
 exports.CommentsRepository = CommentsRepository;
 //# sourceMappingURL=comments.repository.js.map

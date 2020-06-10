@@ -14,17 +14,14 @@ const typeorm_1 = require("@nestjs/typeorm");
 const posts_repository_1 = require("./posts.repository");
 const categories_repository_1 = require("../categories/categories.repository");
 const auth_module_1 = require("../auth/auth.module");
-let PostsModule = (() => {
-    let PostsModule = class PostsModule {
-    };
-    PostsModule = __decorate([
-        common_1.Module({
-            imports: [typeorm_1.TypeOrmModule.forFeature([posts_repository_1.PostsRepository, categories_repository_1.CategoriesRepository]), auth_module_1.AuthModule],
-            controllers: [posts_controller_1.PostsController],
-            providers: [posts_service_1.PostsService]
-        })
-    ], PostsModule);
-    return PostsModule;
-})();
+let PostsModule = class PostsModule {
+};
+PostsModule = __decorate([
+    common_1.Module({
+        imports: [typeorm_1.TypeOrmModule.forFeature([posts_repository_1.PostsRepository, categories_repository_1.CategoriesRepository]), auth_module_1.AuthModule],
+        controllers: [posts_controller_1.PostsController],
+        providers: [posts_service_1.PostsService]
+    })
+], PostsModule);
 exports.PostsModule = PostsModule;
 //# sourceMappingURL=posts.module.js.map

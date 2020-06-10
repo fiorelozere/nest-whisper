@@ -16,49 +16,46 @@ exports.PostsService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const posts_repository_1 = require("./posts.repository");
-let PostsService = (() => {
-    let PostsService = class PostsService {
-        constructor(postsRepository) {
-            this.postsRepository = postsRepository;
+let PostsService = class PostsService {
+    constructor(postsRepository) {
+        this.postsRepository = postsRepository;
+    }
+    async getPosts() {
+        const posts = await this.postsRepository.find({});
+        return posts;
+    }
+    async getUserPosts(user) {
+        const posts = this.postsRepository.find({ where: { username: user.username } });
+        return posts;
+    }
+    async getPost(id) {
+        const post = await this.postsRepository.findOne(id);
+        if (!post) {
+            throw new common_1.NotFoundException(`Post with id: ${id} not found`);
         }
-        async getPosts() {
-            const posts = await this.postsRepository.find({});
-            return posts;
+        return post;
+    }
+    async getUserPost(id, user) {
+        const post = await this.postsRepository.findOne({ where: { username: user.username, id: id } });
+        return post;
+    }
+    async createPost(createPostDto, user) {
+        return this.postsRepository.createPost(createPostDto, user);
+    }
+    async updatePost(updatePostDto, id, user) {
+        return this.postsRepository.updatePost(updatePostDto, id, user);
+    }
+    async deletePost(id, user) {
+        const result = await this.postsRepository.delete({ username: user.username, id: id });
+        if (result.affected === 0) {
+            throw new common_1.NotFoundException(`Post with id: ${id} not found`);
         }
-        async getUserPosts(user) {
-            const posts = this.postsRepository.find({ where: { username: user.username } });
-            return posts;
-        }
-        async getPost(id) {
-            const post = await this.postsRepository.findOne(id);
-            if (!post) {
-                throw new common_1.NotFoundException(`Post with id: ${id} not found`);
-            }
-            return post;
-        }
-        async getUserPost(id, user) {
-            const post = await this.postsRepository.findOne({ where: { username: user.username, id: id } });
-            return post;
-        }
-        async createPost(createPostDto, user) {
-            return this.postsRepository.createPost(createPostDto, user);
-        }
-        async updatePost(updatePostDto, id, user) {
-            return this.postsRepository.updatePost(updatePostDto, id, user);
-        }
-        async deletePost(id, user) {
-            const result = await this.postsRepository.delete({ username: user.username, id: id });
-            if (result.affected === 0) {
-                throw new common_1.NotFoundException(`Post with id: ${id} not found`);
-            }
-        }
-    };
-    PostsService = __decorate([
-        common_1.Injectable(),
-        __param(0, typeorm_1.InjectRepository(posts_repository_1.PostsRepository)),
-        __metadata("design:paramtypes", [posts_repository_1.PostsRepository])
-    ], PostsService);
-    return PostsService;
-})();
+    }
+};
+PostsService = __decorate([
+    common_1.Injectable(),
+    __param(0, typeorm_1.InjectRepository(posts_repository_1.PostsRepository)),
+    __metadata("design:paramtypes", [posts_repository_1.PostsRepository])
+], PostsService);
 exports.PostsService = PostsService;
 //# sourceMappingURL=posts.service.js.map

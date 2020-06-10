@@ -16,32 +16,29 @@ exports.CategoriesService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const categories_repository_1 = require("./categories.repository");
-let CategoriesService = (() => {
-    let CategoriesService = class CategoriesService {
-        constructor(categoriesRepository) {
-            this.categoriesRepository = categoriesRepository;
-        }
-        async getCategories() {
-            const categories = await this.categoriesRepository.find({});
-            return categories;
-        }
-        async getCategory(categoryId) {
-            const category = await this.categoriesRepository.findOne(categoryId);
-            return category;
-        }
-        async createCategory(categoryName) {
-            return this.categoriesRepository.createCategory(categoryName);
-        }
-        async updateCategory(categoryId, categoryName) {
-            return this.categoriesRepository.updateCategory(categoryId, categoryName);
-        }
-    };
-    CategoriesService = __decorate([
-        common_1.Injectable(),
-        __param(0, typeorm_1.InjectRepository(categories_repository_1.CategoriesRepository)),
-        __metadata("design:paramtypes", [categories_repository_1.CategoriesRepository])
-    ], CategoriesService);
-    return CategoriesService;
-})();
+let CategoriesService = class CategoriesService {
+    constructor(categoriesRepository) {
+        this.categoriesRepository = categoriesRepository;
+    }
+    async getCategories() {
+        const categories = await this.categoriesRepository.find({});
+        return categories;
+    }
+    async getCategory(categoryId) {
+        const category = await this.categoriesRepository.findOne(categoryId);
+        return category;
+    }
+    async createCategory(categoryName) {
+        return this.categoriesRepository.createCategory(categoryName);
+    }
+    async updateCategory(categoryId, categoryName) {
+        return this.categoriesRepository.updateCategory(categoryId, categoryName);
+    }
+};
+CategoriesService = __decorate([
+    common_1.Injectable(),
+    __param(0, typeorm_1.InjectRepository(categories_repository_1.CategoriesRepository)),
+    __metadata("design:paramtypes", [categories_repository_1.CategoriesRepository])
+], CategoriesService);
 exports.CategoriesService = CategoriesService;
 //# sourceMappingURL=categories.service.js.map

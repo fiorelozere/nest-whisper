@@ -13,17 +13,14 @@ const categories_controller_1 = require("./categories.controller");
 const typeorm_1 = require("@nestjs/typeorm");
 const categories_repository_1 = require("./categories.repository");
 const auth_module_1 = require("../auth/auth.module");
-let CategoriesModule = (() => {
-    let CategoriesModule = class CategoriesModule {
-    };
-    CategoriesModule = __decorate([
-        common_1.Module({
-            imports: [typeorm_1.TypeOrmModule.forFeature([categories_repository_1.CategoriesRepository]), auth_module_1.AuthModule],
-            providers: [categories_service_1.CategoriesService],
-            controllers: [categories_controller_1.CategoriesController]
-        })
-    ], CategoriesModule);
-    return CategoriesModule;
-})();
+let CategoriesModule = class CategoriesModule {
+};
+CategoriesModule = __decorate([
+    common_1.Module({
+        imports: [typeorm_1.TypeOrmModule.forFeature([categories_repository_1.CategoriesRepository]), auth_module_1.AuthModule],
+        providers: [categories_service_1.CategoriesService],
+        controllers: [categories_controller_1.CategoriesController]
+    })
+], CategoriesModule);
 exports.CategoriesModule = CategoriesModule;
 //# sourceMappingURL=categories.module.js.map

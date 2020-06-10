@@ -16,30 +16,27 @@ exports.CommentsService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const comments_repository_1 = require("./comments.repository");
-let CommentsService = (() => {
-    let CommentsService = class CommentsService {
-        constructor(commentsRepository) {
-            this.commentsRepository = commentsRepository;
+let CommentsService = class CommentsService {
+    constructor(commentsRepository) {
+        this.commentsRepository = commentsRepository;
+    }
+    async createComment(commentString, postId, user) {
+        return this.commentsRepository.createComment(commentString, postId, user);
+    }
+    async deleteComment(commentId, user) {
+        const result = await this.commentsRepository.delete({ id: commentId, username: user.username });
+        if (result.affected === 0) {
+            throw new common_1.NotFoundException(`Post with id: ${commentId} not found`);
         }
-        async createComment(commentString, postId, user) {
-            return this.commentsRepository.createComment(commentString, postId, user);
-        }
-        async deleteComment(commentId, user) {
-            const result = await this.commentsRepository.delete({ id: commentId, username: user.username });
-            if (result.affected === 0) {
-                throw new common_1.NotFoundException(`Post with id: ${commentId} not found`);
-            }
-        }
-        async updateComment(commentString, commentId, user) {
-            return this.commentsRepository.updateComment(commentString, commentId, user);
-        }
-    };
-    CommentsService = __decorate([
-        common_1.Injectable(),
-        __param(0, typeorm_1.InjectRepository(comments_repository_1.CommentsRepository)),
-        __metadata("design:paramtypes", [comments_repository_1.CommentsRepository])
-    ], CommentsService);
-    return CommentsService;
-})();
+    }
+    async updateComment(commentString, commentId, user) {
+        return this.commentsRepository.updateComment(commentString, commentId, user);
+    }
+};
+CommentsService = __decorate([
+    common_1.Injectable(),
+    __param(0, typeorm_1.InjectRepository(comments_repository_1.CommentsRepository)),
+    __metadata("design:paramtypes", [comments_repository_1.CommentsRepository])
+], CommentsService);
 exports.CommentsService = CommentsService;
 //# sourceMappingURL=comments.service.js.map

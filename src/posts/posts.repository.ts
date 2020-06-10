@@ -22,11 +22,12 @@ export class PostsRepository extends Repository<Post> {
     post.categoryId = categoryId;
     post.tags = tags;
     post.visibleUsername = visibleUsername;
-    post.username = null;
-    if(post.visibleUsername){
-      post.username = user.username;
-    }
+    post.username = user.username;
     await this.save(post);
+    if(!post.visibleUsername){
+      delete post.username;
+    }
+    delete post.visibleUsername;
     delete post.user;
 
     return post;

@@ -14,54 +14,51 @@ const typeorm_1 = require("typeorm");
 const bcrypt = require("bcrypt");
 const post_entity_1 = require("../posts/post.entity");
 const comments_entity_1 = require("../comments/comments.entity");
-let User = (() => {
-    let User = class User extends typeorm_1.BaseEntity {
-        async validatePassword(password) {
-            const hash = await bcrypt.hash(password, this.salt);
-            return hash === this.password;
-        }
-    };
-    __decorate([
-        typeorm_1.PrimaryGeneratedColumn(),
-        __metadata("design:type", String)
-    ], User.prototype, "id", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "roles", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "username", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "profilePhotoUrl", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "email", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "password", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "salt", void 0);
-    __decorate([
-        typeorm_1.OneToMany(type => post_entity_1.Post, post => post.user, { eager: true }),
-        __metadata("design:type", Array)
-    ], User.prototype, "posts", void 0);
-    __decorate([
-        typeorm_1.OneToMany(type => comments_entity_1.Comment, comment => comment.user, { eager: true }),
-        __metadata("design:type", Array)
-    ], User.prototype, "comments", void 0);
-    User = __decorate([
-        typeorm_1.Entity(),
-        typeorm_1.Unique(['username'])
-    ], User);
-    return User;
-})();
+let User = class User extends typeorm_1.BaseEntity {
+    async validatePassword(password) {
+        const hash = await bcrypt.hash(password, this.salt);
+        return hash === this.password;
+    }
+};
+__decorate([
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", String)
+], User.prototype, "id", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], User.prototype, "roles", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], User.prototype, "username", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], User.prototype, "profilePhotoUrl", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], User.prototype, "password", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], User.prototype, "salt", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => post_entity_1.Post, post => post.user, { eager: true }),
+    __metadata("design:type", Array)
+], User.prototype, "posts", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => comments_entity_1.Comment, comment => comment.user, { eager: true }),
+    __metadata("design:type", Array)
+], User.prototype, "comments", void 0);
+User = __decorate([
+    typeorm_1.Entity(),
+    typeorm_1.Unique(['username'])
+], User);
 exports.User = User;
 //# sourceMappingURL=user.entity.js.map

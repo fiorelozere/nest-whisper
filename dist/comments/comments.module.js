@@ -13,17 +13,14 @@ const comments_service_1 = require("./comments.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const comments_repository_1 = require("./comments.repository");
 const auth_module_1 = require("../auth/auth.module");
-let CommentsModule = (() => {
-    let CommentsModule = class CommentsModule {
-    };
-    CommentsModule = __decorate([
-        common_1.Module({
-            imports: [typeorm_1.TypeOrmModule.forFeature([comments_repository_1.CommentsRepository]), auth_module_1.AuthModule],
-            controllers: [comments_controller_1.CommentsController],
-            providers: [comments_service_1.CommentsService]
-        })
-    ], CommentsModule);
-    return CommentsModule;
-})();
+let CommentsModule = class CommentsModule {
+};
+CommentsModule = __decorate([
+    common_1.Module({
+        imports: [typeorm_1.TypeOrmModule.forFeature([comments_repository_1.CommentsRepository]), auth_module_1.AuthModule],
+        controllers: [comments_controller_1.CommentsController],
+        providers: [comments_service_1.CommentsService]
+    })
+], CommentsModule);
 exports.CommentsModule = CommentsModule;
 //# sourceMappingURL=comments.module.js.map

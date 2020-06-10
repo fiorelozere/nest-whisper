@@ -15,33 +15,30 @@ const user_repository_1 = require("./user.repository");
 const jwt_1 = require("@nestjs/jwt");
 const passport_1 = require("@nestjs/passport");
 const jwt_strategy_1 = require("./jwt.strategy");
-let AuthModule = (() => {
-    let AuthModule = class AuthModule {
-    };
-    AuthModule = __decorate([
-        common_1.Module({
-            imports: [
-                passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
-                jwt_1.JwtModule.register({
-                    secret: process.env.JWTSECRET || 'Secretsecret',
-                    signOptions: {
-                        expiresIn: 3600000
-                    }
-                }),
-                typeorm_1.TypeOrmModule.forFeature([user_repository_1.UserRepository])
-            ],
-            controllers: [auth_controller_1.AuthController],
-            providers: [
-                auth_service_1.AuthService,
-                jwt_strategy_1.JwtStrategy
-            ],
-            exports: [
-                jwt_strategy_1.JwtStrategy,
-                passport_1.PassportModule
-            ]
-        })
-    ], AuthModule);
-    return AuthModule;
-})();
+let AuthModule = class AuthModule {
+};
+AuthModule = __decorate([
+    common_1.Module({
+        imports: [
+            passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
+            jwt_1.JwtModule.register({
+                secret: process.env.JWTSECRET || 'Secretsecret',
+                signOptions: {
+                    expiresIn: 3600000
+                }
+            }),
+            typeorm_1.TypeOrmModule.forFeature([user_repository_1.UserRepository])
+        ],
+        controllers: [auth_controller_1.AuthController],
+        providers: [
+            auth_service_1.AuthService,
+            jwt_strategy_1.JwtStrategy
+        ],
+        exports: [
+            jwt_strategy_1.JwtStrategy,
+            passport_1.PassportModule
+        ]
+    })
+], AuthModule);
 exports.AuthModule = AuthModule;
 //# sourceMappingURL=auth.module.js.map

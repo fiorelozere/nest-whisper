@@ -1,4 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UnauthorizedException,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
@@ -19,11 +31,17 @@ export class PostsController {
 
   @Get('myposts')
   getUserPosts(@GetUser() user: User) {
+    if(user.roles !== 'user'){
+      throw new UnauthorizedException('You dont have privileges to access this');
+    }
     return this.postsService.getUserPosts(user);
   }
 
   @Get('/myposts/:id')
   getUserPost(@Param('id') id: string, @GetUser() user: User) {
+    if(user.roles !== 'user'){
+      throw new UnauthorizedException('You dont have privileges to access this');
+    }
     return this.postsService.getUserPost(id, user);
   }
 
@@ -35,16 +53,25 @@ export class PostsController {
   @Post()
   @UsePipes(ValidationPipe)
   createPost(@Body() createPostDto: CreatePostDto, @GetUser() user: User) {
+    if(user.roles !== 'user'){
+      throw new UnauthorizedException('You dont have privileges to access this');
+    }
     return this.postsService.createPost(createPostDto, user);
   }
 
   @Patch(':id')
   updatePost(@Param('uuid') id: string, @Body(ValidationPipe) updatePostDto: UpdatePostDto, @GetUser() user: User) {
+    if(user.roles !== 'user'){
+      throw new UnauthorizedException('You dont have privileges to access this');
+    }
     return this.postsService.updatePost(updatePostDto, id , user);
   }
 
   @Delete(':id')
   deletePost(@Param('id') id: string, @GetUser() user: User) {
+    if(user.roles !== 'user'){
+      throw new UnauthorizedException('You dont have privileges to access this');
+    }
     return this.postsService.deletePost(id,user);
   }
 }

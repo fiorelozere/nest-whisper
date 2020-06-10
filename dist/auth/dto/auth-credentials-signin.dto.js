@@ -11,23 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthCredentialsSignInDto = void 0;
 const class_validator_1 = require("class-validator");
-let AuthCredentialsSignInDto = (() => {
-    class AuthCredentialsSignInDto {
-    }
-    __decorate([
-        class_validator_1.IsString(),
-        class_validator_1.MinLength(4),
-        class_validator_1.MaxLength(20),
-        __metadata("design:type", String)
-    ], AuthCredentialsSignInDto.prototype, "username", void 0);
-    __decorate([
-        class_validator_1.IsString(),
-        class_validator_1.MinLength(8),
-        class_validator_1.MaxLength(20),
-        class_validator_1.Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, { message: 'Password is too weak' }),
-        __metadata("design:type", String)
-    ], AuthCredentialsSignInDto.prototype, "password", void 0);
-    return AuthCredentialsSignInDto;
-})();
+class AuthCredentialsSignInDto {
+}
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.MinLength(4),
+    class_validator_1.MaxLength(20),
+    __metadata("design:type", String)
+], AuthCredentialsSignInDto.prototype, "username", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.MinLength(8),
+    class_validator_1.MaxLength(20),
+    class_validator_1.Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, { message: 'Password is too weak' }),
+    __metadata("design:type", String)
+], AuthCredentialsSignInDto.prototype, "password", void 0);
 exports.AuthCredentialsSignInDto = AuthCredentialsSignInDto;
 //# sourceMappingURL=auth-credentials-signin.dto.js.map

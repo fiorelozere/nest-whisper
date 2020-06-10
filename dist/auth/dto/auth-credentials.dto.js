@@ -11,33 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthCredentialsDto = void 0;
 const class_validator_1 = require("class-validator");
-let AuthCredentialsDto = (() => {
-    class AuthCredentialsDto {
-    }
-    __decorate([
-        class_validator_1.IsString(),
-        class_validator_1.MinLength(4),
-        class_validator_1.MaxLength(20),
-        __metadata("design:type", String)
-    ], AuthCredentialsDto.prototype, "username", void 0);
-    __decorate([
-        class_validator_1.IsString(),
-        class_validator_1.IsUrl(),
-        __metadata("design:type", String)
-    ], AuthCredentialsDto.prototype, "profilePhotoUrl", void 0);
-    __decorate([
-        class_validator_1.IsString(),
-        class_validator_1.MinLength(8),
-        class_validator_1.MaxLength(20),
-        class_validator_1.Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, { message: 'Password is too weak' }),
-        __metadata("design:type", String)
-    ], AuthCredentialsDto.prototype, "password", void 0);
-    __decorate([
-        class_validator_1.IsString(),
-        class_validator_1.IsEmail(),
-        __metadata("design:type", String)
-    ], AuthCredentialsDto.prototype, "email", void 0);
-    return AuthCredentialsDto;
-})();
+class AuthCredentialsDto {
+}
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.MinLength(4),
+    class_validator_1.MaxLength(20),
+    __metadata("design:type", String)
+], AuthCredentialsDto.prototype, "username", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsUrl(),
+    __metadata("design:type", String)
+], AuthCredentialsDto.prototype, "profilePhotoUrl", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.MinLength(8),
+    class_validator_1.MaxLength(20),
+    class_validator_1.Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, { message: 'Password is too weak' }),
+    __metadata("design:type", String)
+], AuthCredentialsDto.prototype, "password", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsEmail(),
+    __metadata("design:type", String)
+], AuthCredentialsDto.prototype, "email", void 0);
 exports.AuthCredentialsDto = AuthCredentialsDto;
 //# sourceMappingURL=auth-credentials.dto.js.map
