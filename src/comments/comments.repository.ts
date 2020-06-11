@@ -19,6 +19,7 @@ export class CommentsRepository extends Repository<Comment>{
     if(!visibleUsername){
       delete(comment.username);
     }
+    delete(comment.visibleUsername);
     delete(comment.user);
     return comment;
   }
@@ -31,6 +32,11 @@ export class CommentsRepository extends Repository<Comment>{
     comment.commentString = commentString;
 
     await this.save(comment);
+    if(!comment.visibleUsername){
+      delete(comment.username);
+    }
+    delete(comment.visibleUsername);
+    delete(comment.user);
     return comment;
   }
 

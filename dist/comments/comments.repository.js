@@ -24,6 +24,7 @@ let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
         if (!visibleUsername) {
             delete (comment.username);
         }
+        delete (comment.visibleUsername);
         delete (comment.user);
         return comment;
     }
@@ -34,6 +35,11 @@ let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
         }
         comment.commentString = commentString;
         await this.save(comment);
+        if (!comment.visibleUsername) {
+            delete (comment.username);
+        }
+        delete (comment.visibleUsername);
+        delete (comment.user);
         return comment;
     }
 };
