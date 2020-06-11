@@ -10,5 +10,6 @@ export declare class Comment {
     createdAt: string;
     user: User;
     username: string;
+    visibleUsername: boolean;
     getTime(): string;
 }

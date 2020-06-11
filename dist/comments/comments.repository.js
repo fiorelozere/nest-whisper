@@ -11,7 +11,7 @@ const typeorm_1 = require("typeorm");
 const comments_entity_1 = require("./comments.entity");
 const common_1 = require("@nestjs/common");
 let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
-    async createComment(commentString, postId, user) {
+    async createComment(commentString, postId, visibleUsername, user) {
         const comment = new comments_entity_1.Comment();
         comment.commentString = commentString;
         comment.upvotes = 0;
@@ -19,7 +19,12 @@ let CommentsRepository = class CommentsRepository extends typeorm_1.Repository {
         comment.user = user;
         comment.postId = postId;
         comment.username = user.username;
+        comment.visibleUsername = visibleUsername;
         await this.save(comment);
+        if (!visibleUsername) {
+            delete (comment.username);
+        }
+        delete (comment.user);
         return comment;
     }
     async updateComment(commentString, commentId, user) {

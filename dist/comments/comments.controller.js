@@ -22,11 +22,11 @@ let CommentsController = class CommentsController {
     constructor(commentsService) {
         this.commentsService = commentsService;
     }
-    createComment(commentString, postId, user) {
+    createComment(commentString, postId, visibleUsername, user) {
         if (user.roles !== 'user') {
             throw new common_1.UnauthorizedException('You dont have privileges to access this');
         }
-        return this.commentsService.createComment(commentString, postId, user);
+        return this.commentsService.createComment(commentString, postId, visibleUsername, user);
     }
     deleteComment(commentId, user) {
         if (user.roles !== 'user') {
@@ -43,9 +43,9 @@ let CommentsController = class CommentsController {
 };
 __decorate([
     common_1.Post('/:id'),
-    __param(0, common_1.Body('commentString')), __param(1, common_1.Param('id')), __param(2, get_user_decorator_1.GetUser()),
+    __param(0, common_1.Body('commentString')), __param(1, common_1.Param('id')), __param(2, common_1.Body('visibleUsername')), __param(3, get_user_decorator_1.GetUser()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, user_entity_1.User]),
+    __metadata("design:paramtypes", [String, String, Boolean, user_entity_1.User]),
     __metadata("design:returntype", void 0)
 ], CommentsController.prototype, "createComment", null);
 __decorate([

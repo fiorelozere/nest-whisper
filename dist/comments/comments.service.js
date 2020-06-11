@@ -16,12 +16,17 @@ exports.CommentsService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const comments_repository_1 = require("./comments.repository");
+const posts_repository_1 = require("../posts/posts.repository");
 let CommentsService = class CommentsService {
-    constructor(commentsRepository) {
+    constructor(commentsRepository, postsRepository) {
         this.commentsRepository = commentsRepository;
+        this.postsRepository = postsRepository;
     }
-    async createComment(commentString, postId, user) {
-        return this.commentsRepository.createComment(commentString, postId, user);
+    async createComment(commentString, postId, visibleUsername, user) {
+        if (!await this.postsRepository.findOne({ id: postId })) {
+            throw new common_1.NotFoundException(`Post with id: ${postId} not found`);
+        }
+        return this.commentsRepository.createComment(commentString, postId, visibleUsername, user);
     }
     async deleteComment(commentId, user) {
         const result = await this.commentsRepository.delete({ id: commentId, username: user.username });
@@ -36,7 +41,9 @@ let CommentsService = class CommentsService {
 CommentsService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(comments_repository_1.CommentsRepository)),
-    __metadata("design:paramtypes", [comments_repository_1.CommentsRepository])
+    __param(1, typeorm_1.InjectRepository(posts_repository_1.PostsRepository)),
+    __metadata("design:paramtypes", [comments_repository_1.CommentsRepository,
+        posts_repository_1.PostsRepository])
 ], CommentsService);
 exports.CommentsService = CommentsService;
 //# sourceMappingURL=comments.service.js.map

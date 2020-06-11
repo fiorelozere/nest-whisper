@@ -60,6 +60,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Comment.prototype, "username", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Boolean)
+], Comment.prototype, "visibleUsername", void 0);
 Comment = __decorate([
     typeorm_1.Entity()
 ], Comment);
