@@ -24,6 +24,12 @@ export class PostsService {
       if(!post.visibleUsername){
         delete post.username;
       }
+      post.comments.forEach(comment => {
+        if (!comment.visibleUsername){
+          delete(comment.username);
+        }
+        delete(comment.visibleUsername);
+      })
       delete post.visibleUsername;
       delete post.user;
     })
@@ -50,6 +56,12 @@ export class PostsService {
     if(!post.visibleUsername){
       delete post.username;
     }
+    post.comments.forEach(comment => {
+      if (!comment.visibleUsername){
+        delete(comment.username);
+      }
+      delete(comment.visibleUsername);
+    })
     delete post.visibleUsername;
     delete post.user;
     return post;
@@ -63,6 +75,12 @@ export class PostsService {
     if(!post.visibleUsername){
       delete post.username;
     }
+    post.comments.forEach(comment => {
+      if (!comment.visibleUsername){
+        delete(comment.username);
+      }
+      delete(comment.visibleUsername);
+    })
     delete post.visibleUsername;
     delete post.user;
     return post;
