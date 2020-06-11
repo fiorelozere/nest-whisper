@@ -6,7 +6,7 @@ import { NotFoundException } from '@nestjs/common';
 @EntityRepository(Comment)
 export class CommentsRepository extends Repository<Comment>{
 
-  async createComment(commentString:string, postId: string, user: User): Promise<Comment> {
+  async createComment(commentString:string, postId: string, visibleUsername: boolean, user: User): Promise<Comment> {
     const comment = new Comment();
     comment.commentString = commentString;
     comment.upvotes = 0;
@@ -14,7 +14,12 @@ export class CommentsRepository extends Repository<Comment>{
     comment.user = user;
     comment.postId = postId;
     comment.username = user.username;
+    comment.visibleUsername = visibleUsername;
     await this.save(comment);
+    if(!visibleUsername){
+      delete(comment.username);
+    }
+    delete(comment.user);
     return comment;
   }
 

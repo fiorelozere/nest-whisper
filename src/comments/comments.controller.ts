@@ -13,11 +13,11 @@ export class CommentsController {
   }
 
   @Post('/:id')
-  createComment(@Body('commentString') commentString: string, @Param('id') postId: string, @GetUser() user: User) {
+  createComment(@Body('commentString') commentString: string,  @Param('id') postId: string,@Body('visibleUsername') visibleUsername:boolean, @GetUser() user: User) {
     if(user.roles !== 'user'){
       throw new UnauthorizedException('You dont have privileges to access this');
     }
-    return this.commentsService.createComment(commentString, postId, user);
+    return this.commentsService.createComment(commentString, postId, visibleUsername, user);
   }
 
   @Post('/:id')

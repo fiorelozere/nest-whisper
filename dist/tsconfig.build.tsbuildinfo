@@ -2452,8 +2452,8 @@
         "affectsGlobalScope": false
       },
       "../src/comments/comments.entity.ts": {
-        "version": "9a79c2d99261e40de772ff37fd3f6f98891f3068a48c45685d09d4df88c7712d",
-        "signature": "bf7835158a84f54c546b5c80eb72c1307fe4fa7b5ec9d0297232a30c9e691d14",
+        "version": "920febbe1310c09e4f7ff368343674fba0d04946ab5e38bae36176eb85f44251",
+        "signature": "d91f075ebb6a678aa95844b0908b64801acd5a1119aff4f8f25999fdc878b97a",
         "affectsGlobalScope": false
       },
       "../src/auth/user.entity.ts": {
@@ -3522,22 +3522,22 @@
         "affectsGlobalScope": false
       },
       "../src/comments/comments.repository.ts": {
-        "version": "731fbb5a1bfd9627b2580f2e8ebb5bee32735fe86454ce14bbb3f22eb3ebfbd7",
-        "signature": "2b1e42ce5bfbe110948f88bb0660d7eb100295501cfc99a5ee3f72b2949732e0",
+        "version": "c0063491de44e6dc2c4405fa1068992cc64990f6bfc0f4cb2ab5e40592e920c6",
+        "signature": "93125979a3bf69422ae87cce949767db95f9c8937e2c38ba523b27301734a6be",
         "affectsGlobalScope": false
       },
       "../src/comments/comments.service.ts": {
-        "version": "2b59783020d96cb8c3666034123243b0961721d36612d12621e080e4f1f5934f",
-        "signature": "a38cd687d0ac513dc2c928590b5843c1642ec13529191e984d050ebc90f828ba",
+        "version": "4fd3d5e639d49f7022945d69213a6861d08c4e4cb0a2de2ea006100df94bebd9",
+        "signature": "72aac8ab52701a737f6b1cca6b2ee9a94ef796838ef255bf4b51c62722bf7053",
         "affectsGlobalScope": false
       },
       "../src/comments/comments.controller.ts": {
-        "version": "9c89670ab5a26af797a7daf3810fa679634c1bec9ab82b6856769b7fb49c3334",
-        "signature": "ab5a5eaacbf109a34391cb9160dda0c5ae513a02b8f1475281a0a6a3cfbce016",
+        "version": "288e4e44d26c717ffe31b981f27ae60feaf5c7a8fd84f2acfa7a2c64ccc241f4",
+        "signature": "070630f2a23e2bbea597ccc0a4c0c1bf5cd023e4d03fe3c7d0fc1d2d980b231b",
         "affectsGlobalScope": false
       },
       "../src/comments/comments.module.ts": {
-        "version": "e59bfa788a99ef4edd6c224a96f191420b28c57e02bc1e521bd8c8c1c1daeb70",
+        "version": "fbd3b92d9acda4951854a3d75da883a74d871313237d96d9be84749a1d83e6cf",
         "signature": "154f4b2817f21d1e65ec862bb4e363578d57b2a099b296b97a189a54a6bdb98b",
         "affectsGlobalScope": false
       },
@@ -11276,7 +11276,8 @@
         "../src/auth/auth.module.ts",
         "../src/comments/comments.controller.ts",
         "../src/comments/comments.repository.ts",
-        "../src/comments/comments.service.ts"
+        "../src/comments/comments.service.ts",
+        "../src/posts/posts.repository.ts"
       ],
       "../src/comments/comments.repository.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -11299,7 +11300,8 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/auth/user.entity.ts",
         "../src/comments/comments.entity.ts",
-        "../src/comments/comments.repository.ts"
+        "../src/comments/comments.repository.ts",
+        "../src/posts/posts.repository.ts"
       ],
       "../src/config/typeorm.config.ts": [
         "../node_modules/@nestjs/typeorm/index.d.ts",
@@ -18545,7 +18547,8 @@
       "../src/comments/comments.service.ts": [
         "../src/auth/user.entity.ts",
         "../src/comments/comments.entity.ts",
-        "../src/comments/comments.repository.ts"
+        "../src/comments/comments.repository.ts",
+        "../src/posts/posts.repository.ts"
       ],
       "../src/config/typeorm.config.ts": [
         "../node_modules/@nestjs/typeorm/index.d.ts"

@@ -33,6 +33,9 @@ export class Comment {
   @Column()
   username: string;
 
+  @Column()
+  visibleUsername: boolean;
+
 
   getTime(): string {
     const today = new Date();
