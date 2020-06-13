@@ -12,7 +12,7 @@ export class User extends BaseEntity{
   id:string;
 
   @Column()
-  roles: string;
+  roles: 'user' | 'admin';
 
   @Column()
   username: string;

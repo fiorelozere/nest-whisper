@@ -3,7 +3,7 @@ import { Post } from '../posts/post.entity';
 import { Comment } from '../comments/comments.entity';
 export declare class User extends BaseEntity {
     id: string;
-    roles: string;
+    roles: 'user' | 'admin';
     username: string;
     profilePhotoUrl: string;
     email: string;

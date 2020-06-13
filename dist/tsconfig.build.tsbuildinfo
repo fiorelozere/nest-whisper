@@ -2457,8 +2457,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/user.entity.ts": {
-        "version": "89f7e47283b805815baa3336f4a4a8083207505a9e73ddff64ebf39d389e52c1",
-        "signature": "dd0ddacdddc17b2855d80e6058912abca8a9e1a1abe9a3b07d61a7301714318c",
+        "version": "e21af02803937ddc26781d7b97cf651246a9933e89d1e9139d1e62e9e047abfd",
+        "signature": "159cccbfe00a78b25a0d43268d2bb793ed796cdcd0e00a450b27adbe2829629f",
         "affectsGlobalScope": false
       },
       "../src/posts/post.entity.ts": {
